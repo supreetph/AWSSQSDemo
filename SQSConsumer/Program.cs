@@ -31,7 +31,7 @@ namespace SQSConsumer
             Console.ReadLine();
         }
 
-        private static string RecieveMessages(AmazonSQSClient sqsClient, string queueName)
+        private static void RecieveMessages(AmazonSQSClient sqsClient, string queueName)
         {
             string queueUrl = sqsClient.GetQueueUrlAsync(queueName).Result.QueueUrl;
             var readMessageRequest = new ReceiveMessageRequest
@@ -44,7 +44,6 @@ namespace SQSConsumer
                 Console.WriteLine(item.Body);
             }
 
-            return queueUrl;
         }
     }
 }
