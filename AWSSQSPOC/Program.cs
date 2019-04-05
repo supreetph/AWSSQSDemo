@@ -36,7 +36,7 @@ namespace AWSSQSPOC
 
         public void Main(string[] args)
         {
-            CreateQueue();
+            CreateQueue("Queue1");
             SendMessage(Url, "Sample message to be sent");
 
         }
@@ -64,14 +64,14 @@ namespace AWSSQSPOC
         /// <summary>
         /// Method to create Queue
         /// </summary>
-        private void CreateQueue()
+        private void CreateQueue(string queueName)
         {
             try
             {
                 Console.Write("Create a queue.\n");
                 var sqsRequest = new CreateQueueRequest
                 {
-                    QueueName = "Queue1"
+                    QueueName = queueName
 
                 };
 
