@@ -11,10 +11,29 @@ namespace SQSConsumer
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             var sqsClient = new AmazonSQSClient(RegionEndpoint.APSouth1);
-            var queueUrl = sqsClient.GetQueueUrlAsync("Queue1").Result.QueueUrl;
+            var url = sqsClient.GetQueueUrlAsync("Queue1").Result.QueueUrl;
+            RecieveMessages(sqsClient, "Queue1");
+            DeleteMessage(sqsClient, url);
+
+        }
+
+        private static void DeleteMessage(AmazonSQSClient sqsClient, string queueUrl)
+        {
+            var deleteMessageRequest = new DeleteMessageRequest
+            {
+                QueueUrl = queueUrl
+            };
+            var deleteMessage = sqsClient.DeleteMessageAsync(deleteMessageRequest);
+            Console.ReadLine();
+        }
+
+        private static string RecieveMessages(AmazonSQSClient sqsClient, string queueName)
+        {
+            string queueUrl = sqsClient.GetQueueUrlAsync(queueName).Result.QueueUrl;
             var readMessageRequest = new ReceiveMessageRequest
             {
                 QueueUrl = queueUrl
@@ -24,13 +43,8 @@ namespace SQSConsumer
             {
                 Console.WriteLine(item.Body);
             }
-            var deleteMessageRequest = new DeleteMessageRequest
-            {
-                QueueUrl = queueUrl
-            };
-            var deleteMessage = sqsClient.DeleteMessageAsync(deleteMessageRequest);
-            Console.ReadLine();
 
+            return queueUrl;
         }
     }
 }

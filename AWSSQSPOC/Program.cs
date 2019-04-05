@@ -19,21 +19,28 @@ namespace AWSSQSPOC
         public static void Main(string[] args)
         {
             CreateQueue();
-            SendMessage(sqs);
+            SendMessage(sqs, Url, "Sample message to be sent");
 
         }
 
-        private static void SendMessage(IAmazonSQS sqs)
+        private static void SendMessage(IAmazonSQS sqs, string url, string message)
         {
-            Console.WriteLine("Send Message");
-            var sendMessageRequest = new SendMessageRequest
+            try
             {
-                QueueUrl = Url,
-                MessageBody = "Sample message to be sent"
+                Console.WriteLine("Send Message");
+                var sendMessageRequest = new SendMessageRequest
+                {
+                    QueueUrl = url,
+                    MessageBody = message
 
-            };
-            var sqsSendMessage = sqs.SendMessageAsync(sendMessageRequest);
-            Console.WriteLine("Message sent");
+                };
+                var sqsSendMessage = sqs.SendMessageAsync(sendMessageRequest);
+                Console.WriteLine("Message sent");
+            }
+            catch (AmazonSQSException ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>
@@ -41,23 +48,35 @@ namespace AWSSQSPOC
         /// </summary>
         private static void CreateQueue()
         {
-            Console.Write("Create a queue.\n");
-            var sqsRequest = new CreateQueueRequest
+            try
             {
-                QueueName = "Queue1"
+                Console.Write("Create a queue.\n");
+                var sqsRequest = new CreateQueueRequest
+                {
+                    QueueName = "Queue1"
 
-            };
+                };
 
-            // ProfileManager.RegisterProfile({ profileName}, { accessKey}, { secretKey});
-            var sqsResponse = sqs.CreateQueueAsync(sqsRequest).Result;
-            Url = sqsResponse.QueueUrl;
+                // ProfileManager.RegisterProfile({ profileName}, { accessKey}, { secretKey});
+                var sqsResponse = sqs.CreateQueueAsync(sqsRequest).Result;
+                Url = sqsResponse.QueueUrl;
+                GetQueues();
+                Console.ReadLine();
+            }
+            catch (AmazonSQSException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private static void GetQueues()
+        {
             var listQueueRequest = new ListQueuesRequest();
             var listqueueResponse = sqs.ListQueuesAsync(listQueueRequest);
             foreach (var item in listqueueResponse.Result.QueueUrls)
             {
                 Console.Write(item);
             }
-            Console.ReadLine();
         }
     }
 }
