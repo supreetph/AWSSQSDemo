@@ -12,18 +12,36 @@ namespace AWSSQSPOC
 {
     class Program
     {
+        private readonly string _accessKey;
+        private readonly string _secretKey;
+        private AmazonSQSClient _client;
+        private readonly RegionEndpoint _regionEndpoint;
+        public Program(string accessKey, string secretkey, RegionEndpoint regionEndpoint)
+        {
+            this._accessKey = accessKey;
+            this._secretKey = secretkey;
+            this._regionEndpoint = regionEndpoint;
+        }
 
-        public static IAmazonSQS sqs = new AmazonSQSClient(RegionEndpoint.APSouth1);
+        private AmazonSQSClient Client
+        {
+            get
+            {
+                if (_client == null)
+                    _client = new AmazonSQSClient(this._accessKey, this._secretKey, this._regionEndpoint);
+                return _client;
+            }
+        }
         public static string Url { get; set; }
 
-        public static void Main(string[] args)
+        public void Main(string[] args)
         {
             CreateQueue();
-            SendMessage(sqs, Url, "Sample message to be sent");
+            SendMessage(Url, "Sample message to be sent");
 
         }
 
-        private static void SendMessage(IAmazonSQS sqs, string url, string message)
+        public void SendMessage(string url, string message)
         {
             try
             {
@@ -34,7 +52,7 @@ namespace AWSSQSPOC
                     MessageBody = message
 
                 };
-                var sqsSendMessage = sqs.SendMessageAsync(sendMessageRequest);
+                var sqsSendMessage = Client.SendMessageAsync(sendMessageRequest);
                 Console.WriteLine("Message sent");
             }
             catch (AmazonSQSException ex)
@@ -46,7 +64,7 @@ namespace AWSSQSPOC
         /// <summary>
         /// Method to create Queue
         /// </summary>
-        private static void CreateQueue()
+        private void CreateQueue()
         {
             try
             {
@@ -58,7 +76,7 @@ namespace AWSSQSPOC
                 };
 
                 // ProfileManager.RegisterProfile({ profileName}, { accessKey}, { secretKey});
-                var sqsResponse = sqs.CreateQueueAsync(sqsRequest).Result;
+                var sqsResponse = Client.CreateQueueAsync(sqsRequest).Result;
                 Url = sqsResponse.QueueUrl;
                 GetQueues();
                 Console.ReadLine();
@@ -69,10 +87,10 @@ namespace AWSSQSPOC
             }
         }
 
-        private static void GetQueues()
+        private void GetQueues()
         {
             var listQueueRequest = new ListQueuesRequest();
-            var listqueueResponse = sqs.ListQueuesAsync(listQueueRequest);
+            var listqueueResponse = Client.ListQueuesAsync(listQueueRequest);
             foreach (var item in listqueueResponse.Result.QueueUrls)
             {
                 Console.Write(item);

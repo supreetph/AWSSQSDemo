@@ -14,7 +14,7 @@ namespace SQSConsumer
 
         static void Main(string[] args)
         {
-            var sqsClient = new AmazonSQSClient(RegionEndpoint.APSouth1);
+            var sqsClient = new AmazonSQSClient("accessKey", "token", RegionEndpoint.APSouth1);
             var url = sqsClient.GetQueueUrlAsync("Queue1").Result.QueueUrl;
             RecieveMessages(sqsClient, "Queue1");
             DeleteMessage(sqsClient, url);
