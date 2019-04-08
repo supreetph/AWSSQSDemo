@@ -10,38 +10,38 @@ using System.Threading.Tasks;
 
 namespace AWSSQSPOC
 {
-    class Program
+    public class Program
     {
-        private readonly string _accessKey;
-        private readonly string _secretKey;
-        private AmazonSQSClient _client;
-        private readonly RegionEndpoint _regionEndpoint;
-        public Program(string accessKey, string secretkey, RegionEndpoint regionEndpoint)
+        private static readonly string _accessKey;
+        private static readonly string _secretKey;
+        private static AmazonSQSClient _client;
+        private static readonly RegionEndpoint _regionEndpoint;
+        public Program()
         {
-            this._accessKey = accessKey;
-            this._secretKey = secretkey;
-            this._regionEndpoint = regionEndpoint;
+            //this._accessKey = accessKey;
+            //this._secretKey = secretkey;
+            //this._regionEndpoint = regionEndpoint;
         }
 
-        private AmazonSQSClient Client
+        private static AmazonSQSClient Client
         {
             get
             {
                 if (_client == null)
-                    _client = new AmazonSQSClient(this._accessKey, this._secretKey, this._regionEndpoint);
+                    _client = new AmazonSQSClient(_accessKey, _secretKey, _regionEndpoint);
                 return _client;
             }
         }
         public static string Url { get; set; }
 
-        public void Main(string[] args)
+        public static void Main(string[] args)
         {
             CreateQueue("Queue1");
             SendMessage(Url, "Sample message to be sent");
 
         }
 
-        public void SendMessage(string url, string message)
+        public static void SendMessage(string url, string message)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace AWSSQSPOC
         /// <summary>
         /// Method to create Queue
         /// </summary>
-        private void CreateQueue(string queueName)
+        private static void CreateQueue(string queueName)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace AWSSQSPOC
             }
         }
 
-        private void GetQueues()
+        private static void GetQueues()
         {
             var listQueueRequest = new ListQueuesRequest();
             var listqueueResponse = Client.ListQueuesAsync(listQueueRequest);
@@ -96,5 +96,6 @@ namespace AWSSQSPOC
                 Console.Write(item);
             }
         }
+
     }
 }

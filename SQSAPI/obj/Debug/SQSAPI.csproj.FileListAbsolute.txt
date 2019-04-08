@@ -1,0 +1,12 @@
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\bin\Debug\SQSAPI.exe.config
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\bin\Debug\SQSAPI.exe
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\bin\Debug\SQSAPI.pdb
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\bin\Debug\AWSSDK.Core.dll
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\bin\Debug\AWSSDK.SQS.dll
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\bin\Debug\AWSSDK.Core.pdb
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\bin\Debug\AWSSDK.Core.xml
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\bin\Debug\AWSSDK.SQS.pdb
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\bin\Debug\AWSSDK.SQS.xml
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\obj\Debug\SQSAPI.csprojResolveAssemblyReference.cache
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\obj\Debug\SQSAPI.exe
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSAPI\obj\Debug\SQSAPI.pdb

@@ -11,5 +11,13 @@ D:\Working folder\AWSSQS\AWSSQSPOC\AWSSQSPOC\obj\Debug\AWSSQSPOC.csprojResolveAs
 D:\Working folder\AWSSQS\AWSSQSPOC\AWSSQSPOC\obj\Debug\AWSSQSPOC.exe
 D:\Working folder\AWSSQS\AWSSQSPOC\AWSSQSPOC\obj\Debug\AWSSQSPOC.pdb
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSQSPOC.exe.config
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSQSPOC.exe
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSQSPOC.pdb
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.Core.dll
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.SQS.dll
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.Core.pdb
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.Core.xml
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.SQS.pdb
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.SQS.xml
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\obj\Debug\AWSSQSPOC.exe
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\obj\Debug\AWSSQSPOC.pdb
