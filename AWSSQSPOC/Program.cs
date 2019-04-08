@@ -12,8 +12,8 @@ namespace AWSSQSPOC
 {
     public class Program
     {
-        private static string _accessKey = "AKIA2YKAGIBYZNTZMRWU";
-        private static string _secretKey = "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";
+        private static string _accessKey = "";
+        private static string _secretKey = "";
         private static AmazonSQSClient _client;
         private static RegionEndpoint _regionEndpoint = RegionEndpoint.APSouth1;
         public Program()
@@ -39,7 +39,7 @@ namespace AWSSQSPOC
         public static void Main(string[] args)
         {
             // CreateQueue("Queue2");
-            SendMessage("https://sqs.ap-south-1.amazonaws.com/739405873265/Queue2", "Sample message to be sent");
+            SendMessage("", "Sample message to be sent");
 
         }
 

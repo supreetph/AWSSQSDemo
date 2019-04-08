@@ -12,7 +12,7 @@ namespace SQSConsumer
         static void Main(string[] args)
         {
             var msg = new Message();
-            var sqsClient = new AmazonSQSClient("AKIA2YKAGIBYZNTZMRWU", "cVN+JEls3PoOwgN7KV6IbM+14iQFPcDUhK2iBaWc", RegionEndpoint.APSouth1);
+            var sqsClient = new AmazonSQSClient("", "", RegionEndpoint.APSouth1);
             var url = sqsClient.GetQueueUrlAsync("Queue2").Result.QueueUrl;
             string messageHandle = string.Empty;
 
