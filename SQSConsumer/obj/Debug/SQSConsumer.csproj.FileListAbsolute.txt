@@ -7,6 +7,6 @@ D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSConsumer\bin\Debug\AWSSDK.C
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSConsumer\bin\Debug\AWSSDK.Core.xml
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSConsumer\bin\Debug\AWSSDK.SQS.pdb
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSConsumer\bin\Debug\AWSSDK.SQS.xml
-D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSConsumer\obj\Debug\SQSConsumer.csprojResolveAssemblyReference.cache
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSConsumer\obj\Debug\SQSConsumer.exe
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSConsumer\obj\Debug\SQSConsumer.pdb
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\SQSConsumer\obj\Debug\SQSConsumer.csprojResolveAssemblyReference.cache

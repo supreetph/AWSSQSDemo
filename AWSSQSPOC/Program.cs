@@ -12,10 +12,10 @@ namespace AWSSQSPOC
 {
     public class Program
     {
-        private static readonly string _accessKey;
-        private static readonly string _secretKey;
+        private static string _accessKey = "AKIA2YKAGIBYZNTZMRWU";
+        private static string _secretKey = "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";
         private static AmazonSQSClient _client;
-        private static readonly RegionEndpoint _regionEndpoint;
+        private static RegionEndpoint _regionEndpoint = RegionEndpoint.APSouth1;
         public Program()
         {
             //this._accessKey = accessKey;
@@ -31,13 +31,15 @@ namespace AWSSQSPOC
                     _client = new AmazonSQSClient(_accessKey, _secretKey, _regionEndpoint);
                 return _client;
             }
+
+
         }
         public static string Url { get; set; }
 
         public static void Main(string[] args)
         {
-            CreateQueue("Queue1");
-            SendMessage(Url, "Sample message to be sent");
+            // CreateQueue("Queue2");
+            SendMessage("https://sqs.ap-south-1.amazonaws.com/739405873265/Queue2", "Sample message to be sent");
 
         }
 
@@ -52,7 +54,7 @@ namespace AWSSQSPOC
                     MessageBody = message
 
                 };
-                var sqsSendMessage = Client.SendMessageAsync(sendMessageRequest);
+                var sqsSendMessage = Client.SendMessageAsync(sendMessageRequest).Result;
                 Console.WriteLine("Message sent");
             }
             catch (AmazonSQSException ex)

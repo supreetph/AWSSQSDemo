@@ -19,5 +19,6 @@ D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.Cor
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.Core.xml
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.SQS.pdb
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\bin\Debug\AWSSDK.SQS.xml
+D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\obj\Debug\AWSSQSPOC.csprojResolveAssemblyReference.cache
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\obj\Debug\AWSSQSPOC.exe
 D:\Working folder\AWSSQS\AWSSQSDemoNew\AWSSQSDemo\AWSSQSPOC\obj\Debug\AWSSQSPOC.pdb
