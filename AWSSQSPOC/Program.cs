@@ -16,6 +16,7 @@ namespace AWSSQSPOC
         private static string _secretKey = "";
         private static AmazonSQSClient _client;
         private static RegionEndpoint _regionEndpoint = RegionEndpoint.APSouth1;
+
         public Program()
         {
             //this._accessKey = accessKey;
@@ -38,30 +39,61 @@ namespace AWSSQSPOC
 
         public static void Main(string[] args)
         {
+            GetQueues();
             // CreateQueue("Queue2");
-            SendMessage("", "Sample message to be sent");
+            AwsSqsCreator creator = new AwsSqsCreator();
 
-        }
+            Message msg = new Message();
+            msg.Body = "msg 2";
 
-        public static void SendMessage(string url, string message)
-        {
-            try
+
+            Dictionary<string, MessageAttributeModel> attr = new Dictionary<string, MessageAttributeModel>
             {
-                Console.WriteLine("Send Message");
-                var sendMessageRequest = new SendMessageRequest
                 {
-                    QueueUrl = url,
-                    MessageBody = message
+                    "sparrowHeader",new MessageAttributeModel {DataType="String",StringValue="sparrowHeader" }
+                },
+                 {
+                    "Source",new MessageAttributeModel {DataType="String",StringValue="sourceValue" }
+                }, {
+                    "Dest",new MessageAttributeModel {DataType="String",StringValue="Destination" }
+                },
+                  {
+                    "MESSAGEPRIORITY",new MessageAttributeModel {DataType="String",StringValue="HiGH" }
+                }
+            };
 
-                };
-                var sqsSendMessage = Client.SendMessageAsync(sendMessageRequest).Result;
-                Console.WriteLine("Message sent");
-            }
-            catch (AmazonSQSException ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            //MessageAttributeModel val = new MessageAttributeModel
+            //{
+            //    StringValue = "value2",
+            //    DataType = "String"
+            //};
+
+            //attr.Add("key2", val);
+            creator.SendMessage("https://sqs.ap-south-1.amazonaws.com/739405873265/Queue2", msg, attr);
+
+
         }
+
+        //public static void SendMessage(string url, string message)
+        //{
+        //    try
+        //    {
+
+        //        Console.WriteLine("Send Message");
+        //        var sendMessageRequest = new SendMessageRequest
+        //        {
+        //            QueueUrl = url,
+        //            MessageBody = message
+
+        //        };
+        //        var sqsSendMessage = Client.SendMessageAsync(sendMessageRequest).Result;
+        //        Console.WriteLine("Message sent");
+        //    }
+        //    catch (AmazonSQSException ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
 
         /// <summary>
         /// Method to create Queue
@@ -97,6 +129,7 @@ namespace AWSSQSPOC
             {
                 Console.Write(item);
             }
+
         }
 
     }

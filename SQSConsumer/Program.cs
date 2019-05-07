@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace SQSConsumer
 {
-    class Program
+    public class Program
     {
 
         static void Main(string[] args)
@@ -14,27 +14,20 @@ namespace SQSConsumer
             var msg = new Message();
             var sqsClient = new AmazonSQSClient("", "", RegionEndpoint.APSouth1);
             var url = sqsClient.GetQueueUrlAsync("Queue2").Result.QueueUrl;
-            string messageHandle = string.Empty;
+            //string messageHandle = string.Empty;
 
-            msg = RecieveMessages(sqsClient, "Queue2");
 
-            var listOfMessages = GetAllMessages(sqsClient, "Queue2");
 
-            DeleteMessage(sqsClient, url);
 
+            AwsSqsConsumer consumer = new AwsSqsConsumer();
+            //  msg = AwsSqsConsumer.RecieveMessages(sqsClient, "Queue2");
+            // var listOfMessages = AwsSqsConsumer.GetAllMessages(sqsClient, url).Result;
+            //consumer.DeleteMessage(sqsClient, url);
+            //  AwsSqsConsumer.DeleteMessage(sqsClient, "https://sqs.ap-south-1.amazonaws.com/739405873265/Queue2", msg.ReceiptHandle);
+            consumer.Subscribe(sqsClient, url);
         }
 
-        private static void DeleteMessage(AmazonSQSClient sqsClient, string queueUrl)
-        {
-            var message = RecieveMessages(sqsClient, "Queue2");
-            var deleteMessageRequest = new DeleteMessageRequest
-            {
-                QueueUrl = queueUrl,
-                ReceiptHandle = message.MessageHandle
-            };
-            var deleteMessage = sqsClient.DeleteMessageAsync(deleteMessageRequest).Result;
-            Console.ReadLine();
-        }
+
 
         private static Message RecieveMessages(AmazonSQSClient sqsClient, string queueName)
         {
@@ -48,21 +41,21 @@ namespace SQSConsumer
             var readMessageResponse = sqsClient.ReceiveMessageAsync(readMessageRequest).Result.Messages;
             foreach (var item in readMessageResponse)
             {
-                msg.MessageBody = item.Body;
-                msg.MessageHandle = item.ReceiptHandle;
+                msg.Body = item.Body;
+                msg.ReceiptHandle = item.ReceiptHandle;
             }
             return msg;
 
         }
-        private static List<string> GetAllMessages(AmazonSQSClient sqsClient, string queueName)
-        {
-            List<string> messagesAll = new List<string>();
-            var message = RecieveMessages(sqsClient, queueName);
-            foreach (var item in message.MessageBody)
-            {
-                messagesAll.Add(item.ToString());
-            }
-            return messagesAll;
-        }
+        //private static List<string> GetAllMessages(AmazonSQSClient sqsClient, string queueName)
+        //{
+        //    List<string> messagesAll = new List<string>();
+        //    var message = RecieveMessages(sqsClient, queueName);
+        //    foreach (var item in message.Body)
+        //    {
+        //        messagesAll.Add(item.ToString());
+        //    }
+        //    return messagesAll;
+        //}
     }
 }
